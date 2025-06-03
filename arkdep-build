@@ -368,6 +368,9 @@ if [[ $type == 'archlinux' ]]; then
 		(source $variantdir/extensions/post_install.sh)
 	fi
 
+  # Remove machine-id. This should be unique per machine
+  rm -f $workdir/etc/machine-id
+
 	# Remove subvolumes created by systemd
 	[[ -d $workdir/var/lib/portables ]] &&
 		printf '\e[1;34m-->\e[0m\e[1m Removing systemd subvolume var/lib/portables\e[0m\n'
